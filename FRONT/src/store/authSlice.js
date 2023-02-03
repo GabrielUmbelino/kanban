@@ -12,6 +12,7 @@ export const login = createAsyncThunk(
     return response.data;
   }
 );
+
 export const authSlice = createSlice({
   name: 'users',
   initialState: {
@@ -23,6 +24,10 @@ export const authSlice = createSlice({
     setToken(state, action) {
       state.token = action.payload;
     },
+    logout(state) {
+      state.token = null
+      localStorage.setItem('TOKEN_KEY', '')
+    }
   },
   extraReducers: builder => {
     builder.addCase(login.pending, (state, action) => {
@@ -34,6 +39,7 @@ export const authSlice = createSlice({
       if (state.loading === 'pending') {
         state.token = action.payload;
         state.loading = 'idle';
+        localStorage.setItem('TOKEN_KEY', JSON.stringify(action.payload))
       }
     });
     builder.addCase(login.rejected, (state, action) => {
@@ -44,4 +50,5 @@ export const authSlice = createSlice({
     });
   },
 });
+
 export default authSlice.reducer;
