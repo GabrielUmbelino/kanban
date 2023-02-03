@@ -10,6 +10,7 @@ export const LoginForm = ({ onLogin }) => {
     if (!user || !password) return;
     onLogin({ user, password });
   };
+
   return (
     <div className='w-full '>
       <div>
