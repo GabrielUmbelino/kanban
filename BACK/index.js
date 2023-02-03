@@ -59,15 +59,13 @@ app.get('/cards', (req, res) => {
 });
 
 app.post('/cards', (req, res) => {
-
-    const { titulo, conteudo, lista, id } = req.body;
+    const { titulo, conteudo, lista, id, ordem } = req.body;
     if (titulo && conteudo && lista && !id) {
-        const card = { titulo, conteudo, lista, id: uuid() };
+        const card = { titulo, conteudo, lista, id: uuid(), ordem };
         cards.push(card);
         res.status(201).json(card);
     }
     else return res.sendStatus(400);
-
 });
 
 const validateAndLogAlterationOrDeletion = (req, res, next) => {
@@ -97,11 +95,12 @@ const validateAndLogAlterationOrDeletion = (req, res, next) => {
 app.use('/cards/:id', validateAndLogAlterationOrDeletion);
 
 app.put('/cards/:id', (req, res) => {
-    const { titulo, conteudo, lista, id } = req.body;
+    const { titulo, conteudo, lista, id, ordem } = req.body;
     const card = cards.find(x => x.id === id);
     card.titulo = titulo;
     card.conteudo = conteudo;
     card.lista = lista;
+    card.ordem = ordem;
     return res.status(200).json(card);
 });
 
