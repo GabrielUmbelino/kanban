@@ -6,6 +6,7 @@ export const BoardColumn = ({
   count,
   children,
   droppableId,
+  onAddCard,
 }) => {
   return (
     <div className='flex flex-col flex-shrink-0 w-80'>
@@ -14,7 +15,10 @@ export const BoardColumn = ({
         <span className='flex items-center justify-center w-5 h-5 ml-2 text-sm font-semibold text-indigo-500 bg-white rounded bg-opacity-30'>
           {count}
         </span>
-        <button className='flex items-center justify-center w-6 h-6 ml-auto text-indigo-500 rounded hover:bg-indigo-500 hover:text-indigo-100'>
+        <button
+          onClick={onAddCard}
+          className='flex items-center justify-center w-6 h-6 ml-auto text-indigo-500 rounded hover:bg-indigo-500 hover:text-indigo-100'
+        >
           <svg
             className='w-5 h-5'
             fill='none'
@@ -30,13 +34,17 @@ export const BoardColumn = ({
           </svg>
         </button>
       </div>
-      <div className='flex flex-col pb-2 overflow-auto'>
+      <div
+        className='flex flex-col pb-2 overflow-auto'
+        style={{ height: '-webkit-fill-available' }}
+      >
         <Droppable droppableId={droppableId}>
           {(provided, snapshot) => (
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
               className={snapshot.isDraggingOver ? 'dragging' : ''}
+              style={{ height: '-webkit-fill-available' }}
             >
               <div>{children}</div>
               {provided.placeholder}

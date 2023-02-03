@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const LoginForm = ({ onLogin }) => {
+export const LoginForm = React.memo(({ onLogin }) => {
   const [user, setUser] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -16,9 +16,7 @@ export const LoginForm = ({ onLogin }) => {
       <div>
         <div className='flex -mx-3'>
           <div className='w-full px-3 mb-5'>
-            <label for='' className='text-xs font-semibold px-1'>
-              Usuário
-            </label>
+            <label className='text-xs font-semibold px-1'>Usuário</label>
             <div className='flex'>
               <input
                 value={user}
@@ -32,9 +30,7 @@ export const LoginForm = ({ onLogin }) => {
         </div>
         <div className='flex -mx-3'>
           <div className='w-full px-3 mb-12'>
-            <label for='' className='text-xs font-semibold px-1'>
-              Senha
-            </label>
+            <label className='text-xs font-semibold px-1'>Senha</label>
             <div className='flex'>
               <input
                 value={password}
@@ -59,4 +55,4 @@ export const LoginForm = ({ onLogin }) => {
       </div>
     </div>
   );
-};
+});
