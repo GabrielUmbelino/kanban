@@ -23,7 +23,7 @@ export const LoginForm = React.memo(({ onLogin }) => {
                 onChange={onChangeUser}
                 type='text'
                 className='w-full px-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
-                placeholder='user'
+                placeholder='Usuário'
               />
             </div>
           </div>
@@ -40,6 +40,7 @@ export const LoginForm = React.memo(({ onLogin }) => {
                 placeholder='************'
               />
             </div>
+            <p class='text-xs italic'>usuário:letscode senha:lets@123</p>
           </div>
         </div>
         <div className='flex -mx-3'>

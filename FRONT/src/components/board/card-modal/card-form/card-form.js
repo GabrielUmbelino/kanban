@@ -45,6 +45,7 @@ export const CardForm = ({ onSave, onCancel, card }) => {
                 value={conteudo}
                 onChange={onChangeContent}
                 type='text'
+                placeholder='Insira um conteúdo'
                 className='w-full px-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
               />
             </div>
