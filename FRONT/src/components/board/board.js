@@ -37,12 +37,9 @@ export const Board = () => {
     [dispatch, doingCards, doneCards, todoCards]
   );
 
-  const onAddCard = React.useCallback(
-    card => {
-      setCard(card);
-    },
-    []
-  );
+  const onAddCard = React.useCallback(card => {
+    setCard(card);
+  }, []);
 
   const onEdit = React.useCallback(card => {
     setCard(card);
@@ -56,8 +53,13 @@ export const Board = () => {
   );
 
   const onCancel = React.useCallback(() => setCard(null), []);
-
-  if (loading === 'loading' && card) <Loading />;
+  if (loading === 'pending') {
+    return (
+      <div class='flex items-center justify-center h-screen'>
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <>
